@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.developer.bshapp.fragments.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" />
+    <fragment
+        android:id="@+id/jobsFragment"
+        android:name="com.developer.bshapp.fragments.JobsFragment"
+        android:label="fragment_jobs"
+        tools:layout="@layout/fragment_jobs" />
+    <fragment
+        android:id="@+id/marriageFragment"
+        android:name="com.developer.bshapp.fragments.MarriageFragment"
+        android:label="fragment_marriage"
+        tools:layout="@layout/fragment_marriage" />
+    <fragment
+        android:id="@+id/realEstateFragment"
+        android:name="com.developer.bshapp.fragments.RealEstateFragment"
+        android:label="fragment_real_estate"
+        tools:layout="@layout/fragment_real_estate" />
+    <fragment
+        android:id="@+id/adsFragment"
+        android:name="com.developer.bshapp.fragments.AdsFragment"
+        android:label="fragment_ads"
+        tools:layout="@layout/fragment_ads" />
+</navigation>

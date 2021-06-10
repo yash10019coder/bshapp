@@ -1,0 +1,86 @@
+<resources>
+    <string name="app_name">BSH App</string>
+    <!-- TODO: Remove or change this placeholder text -->
+
+    <string name="partnerKey">k0Y0P75120fbc399f4906bac6e2c81bb5038a</string>
+
+
+    <!--    Name of states in their native language-->
+
+    <string name="tamilnadu">தமிழ்நாடு</string>
+    <string name="Hyderabad">తెలంగాణ</string>
+    <string name="AndraPradesh">ఆంధ్రప్రదేశ్</string>
+    <string name="Karnataka">ಕರ್ನಾಟಕ</string>
+
+    <!--    telugu Categories Names in their native language-->
+
+    <string name="teluguLocalNews">స్థానిక వార్తలు</string>
+    <string name="tamilLocalNews">உள்ளூர் செய்திகள்</string>
+    <string name="kannadaLocalNews">ಸ್ಥಳೀಯ ಸುದ್ದಿ</string>
+
+    <string name="teluguJobs">ఉద్యోగాలు</string>
+    <string name="tamilJobs">வேலைகள்</string>
+    <string name="kannadaJobs">ಉದ್ಯೋಗಗಳು</string>
+
+    <string name="teluguMarriage">వివాహం</string>
+    <string name="tamilMarriage">திருமணம்</string>
+    <string name="kannadaMarriage">ಮದುವೆ</string>
+
+    <string name="teluguAds">ప్రకటనలు</string>
+    <string name="tamilAds">விளம்பரங்கள்</string>
+    <string name="kannadaAds">ಜಾಹೀರಾತುಗಳು</string>
+
+
+    <string name="teluguRealEstate">రియల్ ఎస్టేట్</string>
+    <string name="tamilRealEstate">மனை</string>
+    <string name="kannadaRealEstate">ರಿಯಲ್ ಎಸ್ಟೇಟ್</string>
+
+
+    <string name="tamilVillageStory">எனது கிராமக் கதை</string>
+    <string name="kannadaVillageStory">ನನ್ನ ಹಳ್ಳಿ ಕಥೆ</string>
+
+
+    <string name="teluguSelectCategory">దయచేసి మీ వర్గాన్ని ఎంచుకోండి</string>
+    <string name="tamilSelectCategory">கருத்து</string>
+    <string name="kannadaSelectCategory">ದಯವಿಟ್ಟು ನಿಮ್ಮ ವರ್ಗವನ್ನು ಆಯ್ಕೆಮಾಡಿ</string>
+
+    <string name="teluguLetsGetStarted">ప్రారంభిద్దాం!</string>
+    <string name="tamilLetsGetStarted">தொடங்குவோம்!</string>
+    <string name="kannadaLetsGetStarted">ನಾವೀಗ ಆರಂಭಿಸೋಣ!</string>
+
+
+    <string name="teluguHeadline">హెడ్‌లైన్</string>
+    <string name="tamilHeadline">தலைப்பு</string>
+    <string name="kannadaHeadline">ಹೆಡ್‌ಲೈನ್</string>
+
+    <string name="teluguNews">వార్తల కంటెంట్</string>
+    <string name="tamilNews">செய்தி</string>
+    <string name="kannadaNews">ಸುದ್ದಿ</string>
+
+    <string name="teluguMandal">ఏ మండలం</string>
+    <string name="tamilMandal">எந்த மண்டல்</string>
+    <string name="kannadaMandal">ಯಾವ ಮಂಡಲ್</string>
+
+    <string name="teluguDate">తేదీ</string>
+    <string name="tamilDate">தேதி</string>
+    <string name="kannadaDate">ದಿನಾಂಕ</string>
+
+
+    <string name="teluguSubmit">సమర్పించండి</string>
+    <string name="tamilSubmit">சமர்ப்பிக்கவும்</string>
+    <string name="kannadaSubmit">ಸಲ್ಲಿಸು</string>
+
+    <string name="teluguMoreDetails">మరిన్ని వివరాలు</string>
+    <string name="tamilMoreDetails">கூடுதல் தகவல்கள்</string>
+    <string name="kannadaMoreDetails">ಹೆಚ್ಚಿನ ವಿವರಗಳಿಗಾಗಿ</string>
+
+    <string name="teluguAllTrue">నేను సమర్పించిన వివరాలు అన్నీ నిజం</string>
+    <string name="tamilAllTrue">நான் சமர்ப்பித்த விவரங்கள் அனைத்தும் உண்மைதான்</string>
+    <string name="kannadaAllTrue">ನಾನು ಸಲ್ಲಿಸಿದ ವಿವರಗಳು ನಿಜ</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+
+
+</resources>

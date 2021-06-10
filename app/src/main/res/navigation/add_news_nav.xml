@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:startDestination="@id/categoryAddFragment">
+
+    <fragment
+        android:id="@+id/categoryAddFragment"
+        android:name="com.developer.bshapp.fragments.CategoryAddFragment"
+        android:label="fragment_category_add"
+        tools:layout="@layout/fragment_category_add" >
+        <action
+            android:id="@+id/action_categoryAddFragment_to_addNewsFragment"
+            app:destination="@id/addNewsFragment" />
+        <action
+            android:id="@+id/action_categoryAddFragment_to_addJobsFragment"
+            app:destination="@id/addJobsFragment" />
+        <action
+            android:id="@+id/action_categoryAddFragment_to_addAdsFragment"
+            app:destination="@id/addAdsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addNewsFragment"
+        android:name="com.developer.bshapp.fragments.addNewsFragment"
+        android:label="fragment_add_news"
+        tools:layout="@layout/fragment_add_news" >
+        <action
+            android:id="@+id/action_addNewsFragment_to_sentSuccessfullyFragment"
+            app:destination="@id/sentSuccessfullyFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/sentSuccessfullyFragment"
+        android:name="com.developer.bshapp.fragments.SentSuccessfullyFragment"
+        android:label="fragment_sent_successfully"
+        tools:layout="@layout/fragment_sent_successfully" />
+    <fragment
+        android:id="@+id/addJobsFragment"
+        android:name="com.developer.bshapp.fragments.addJobsFragment"
+        android:label="fragment_add_jobs"
+        tools:layout="@layout/fragment_add_jobs" >
+        <action
+            android:id="@+id/action_addJobsFragment_to_sentSuccessfullyFragment"
+            app:destination="@id/sentSuccessfullyFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addAdsFragment"
+        android:name="com.developer.bshapp.fragments.AddAdsFragment"
+        android:label="fragment_add_ads"
+        tools:layout="@layout/fragment_add_ads" >
+        <action
+            android:id="@+id/action_addAdsFragment_to_sentSuccessfullyFragment"
+            app:destination="@id/sentSuccessfullyFragment" />
+    </fragment>
+</navigation>

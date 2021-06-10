@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:icon="@drawable/ic_whatsapp"
+        android:title="Whatsapp"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/youtubelive"
+       android:icon="@drawable/liveimg"
+        android:title="Live Image"
+        app:showAsAction="always" />
+
+    <item
+        android:icon="@drawable/ic_outline_notifications_24"
+        android:title="Notification"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/userprofile"
+        android:icon="@drawable/ic_baseline_account_circle_24"
+        android:title="User Profile"
+        app:showAsAction="always" />
+</menu>

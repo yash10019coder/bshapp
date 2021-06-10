@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "1056723260453",
+    "firebase_url": "https://bsh-app-fa56e-default-rtdb.firebaseio.com",
+    "project_id": "bsh-app-fa56e",
+    "storage_bucket": "bsh-app-fa56e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1056723260453:android:a5d69aed7f3a8376eb5bcc",
+        "android_client_info": {
+          "package_name": "com.developer.bshapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1056723260453-4ikdso5mv1ap18euio32ql0737ojnvfh.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.developer.bshapp",
+            "certificate_hash": "32213dd910317fcd548c5df84af47974cbe27673"
+          }
+        },
+        {
+          "client_id": "1056723260453-h71q4ihb216gkvrr2gl8i6uiv2f5b224.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDiVTgEh2jB0oIzbOcDddwujUMKS0axPkE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1056723260453-h71q4ihb216gkvrr2gl8i6uiv2f5b224.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

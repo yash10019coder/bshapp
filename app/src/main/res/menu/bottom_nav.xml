@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/homeFragment"
+        android:icon="@drawable/ic_worldwide"
+        android:title="News" />
+    <item
+        android:id="@+id/jobsFragment"
+        android:icon="@drawable/ic_job"
+        android:title="Jobs" />
+    <item
+        android:id="@+id/placeholder"
+        android:title="" />
+    <item
+        android:id="@+id/realEstateFragment"
+        android:icon="@drawable/ic_real_estate"
+        android:title="Real Estate" />
+    <item
+        android:id="@+id/marriageFragment"
+        android:icon="@drawable/ic_marriage"
+        android:title="Marriage" />
+
+</menu>
