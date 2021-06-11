@@ -20,6 +20,7 @@ import android.view.ViewGroup
 import android.widget.*
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
+import androidx.navigation.Navigation
 import com.developer.bshapp.API.RetrofitApi
 import com.developer.bshapp.R
 import com.google.android.material.textfield.TextInputLayout
@@ -189,7 +190,10 @@ class addNewsFragment : Fragment(), DatePickerDialog.OnDateSetListener, TimePick
 
                 withContext(Dispatchers.Main) {
                     if (response.isSuccessful) {
-
+                        view?.let {
+                            Navigation.findNavController(it)
+                                .navigate(R.id.action_addNewsFragment_to_sentSuccessfullyFragment)
+                        }
                         // Convert raw JSON to pretty JSON using GSON library
                         val gson = GsonBuilder().setPrettyPrinting().create()
                         val prettyJson = gson.toJson(

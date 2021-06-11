@@ -1,4 +1,4 @@
-package com.developer.bshapp.fragments
+ package com.developer.bshapp.fragments
 
 import android.Manifest
 import android.app.Activity.RESULT_OK
@@ -15,6 +15,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
+import androidx.navigation.Navigation
 import com.developer.bshapp.API.RetrofitApi
 import com.developer.bshapp.R
 import com.developer.bshapp.databinding.FragmentAddAdsBinding
@@ -132,12 +133,12 @@ class AddAdsFragment : Fragment() {
 
         val params = HashMap<String?, String?>()
         params["image"] = encodedImage
-        params["description"] =binding?.etdis?.editText.toString()
-        params["companyName"] = binding?.etcmpyname?.editText.toString()
-        params["phone"] = binding?.etphn?.editText.toString()
-        params["websiteLink"] = binding?.etwebsite?.editText.toString()
-        params["price"] = binding?.etprice?.editText.toString()
-        params["address"] = binding?.etadres?.editText.toString()
+        params["description"] =binding?.etdis?.editText?.text.toString()
+        params["companyName"] = binding?.etcmpyname?.editText?.text.toString()
+        params["phone"] = binding?.etphn?.editText?.text.toString()
+        params["websiteLink"] = binding?.etwebsite?.editText?.text.toString()
+        params["price"] = binding?.etprice?.editText?.text.toString()
+        params["address"] = binding?.etadres?.editText?.text.toString()
 
         CoroutineScope(Dispatchers.IO).launch {
 
@@ -146,7 +147,10 @@ class AddAdsFragment : Fragment() {
 
             withContext(Dispatchers.Main) {
                 if (response.isSuccessful) {
-
+                    view?.let {
+                        Navigation.findNavController(it)
+                            .navigate(R.id.action_addAdsFragment_to_sentSuccessfullyFragment)
+                    }
                     // Convert raw JSON to pretty JSON using GSON library
                     val gson = GsonBuilder().setPrettyPrinting().create()
                     val prettyJson = gson.toJson(
@@ -233,8 +237,7 @@ class AddAdsFragment : Fragment() {
         bitmap.compress(Bitmap.CompressFormat.JPEG, 100, stream)
 
         val imageBytes = stream.toByteArray()
-        var encodedImage =
-            Base64.encodeToString(imageBytes, Base64.DEFAULT)
+        encodedImage = Base64.encodeToString(imageBytes, Base64.DEFAULT)
 
 
     }

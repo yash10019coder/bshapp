@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.Navigation
 import com.developer.bshapp.API.RetrofitApi
 import com.developer.bshapp.R
 import com.developer.bshapp.databinding.FragmentAddAdsBinding
@@ -74,17 +75,17 @@ class addJobsFragment : Fragment() {
         val service = retrofit.create(RetrofitApi::class.java)
 
         val params = HashMap<String?, String?>()
-        params["companyName"] = binding?.etCmpName?.editText.toString()
-        params["jobTitle"] = binding?.etjbtitle?.editText.toString()
-        params["description"] = binding?.etdis?.editText.toString()
-        params["state"] = binding?.etstat?.editText.toString()
-        params["city"] = binding?.etstat?.editText.toString()
-        params["district"] = binding?.etdis?.editText.toString()
-        params["phone"] = binding?.etphn?.editText.toString()
-        params["minSalary"] = binding?.etMinsal?.editText.toString()
-        params["maxSalary"] = binding?.etmaxsal?.editText.toString()
-        params["qualification"] = binding?.etquali?.editText.toString()
-        params["experience"] = binding?.etmaxexp?.editText.toString()
+        params["companyName"] = binding?.etCmpName?.editText?.text.toString()
+        params["jobTitle"] = binding?.etjbtitle?.editText?.text.toString()
+        params["description"] = binding?.etdis?.editText?.text.toString()
+        params["state"] = binding?.etstat?.editText?.text.toString()
+        params["city"] = binding?.etstat?.editText?.text.toString()
+        params["district"] = binding?.etdis?.editText?.text.toString()
+        params["phone"] = binding?.etphn?.editText?.text.toString()
+        params["minSalary"] = binding?.etMinsal?.editText?.text.toString()
+        params["maxSalary"] = binding?.etmaxsal?.editText?.text.toString()
+        params["qualification"] = binding?.etquali?.editText?.text.toString()
+        params["experience"] = binding?.etmaxexp?.editText?.text.toString()
 
         CoroutineScope(Dispatchers.IO).launch {
 
@@ -93,7 +94,10 @@ class addJobsFragment : Fragment() {
 
             withContext(Dispatchers.Main) {
                 if (response.isSuccessful) {
-
+                    view?.let {
+                        Navigation.findNavController(it)
+                            .navigate(R.id.action_addJobsFragment_to_sentSuccessfullyFragment)
+                    }
                     // Convert raw JSON to pretty JSON using GSON library
                     val gson = GsonBuilder().setPrettyPrinting().create()
                     val prettyJson = gson.toJson(
