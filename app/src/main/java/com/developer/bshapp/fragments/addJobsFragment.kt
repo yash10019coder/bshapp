@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isEmpty
 import androidx.navigation.Navigation
 import com.developer.bshapp.API.RetrofitApi
 import com.developer.bshapp.R
@@ -31,37 +32,38 @@ class addJobsFragment : Fragment() {
         val view = binding!!.root
 
         binding!!.submitBtn.setOnClickListener {
-            verify()
-            uploadToDB()
+           verify()
         }
 
         return view
     }
 
     private fun verify() {
-        if (binding?.etCmpName?.editText.toString().equals(""))
+        if (binding?.etCmpName?.isEmpty() == true)
             binding?.etCmpName?.editText?.error="This can't be empty"
-        if (binding?.etCmpName?.editText.toString().equals(""))
-            binding?.etCmpName?.editText?.error="This can't be empty"
-        if (binding?.etCmpName?.editText.toString().equals(""))
-            binding?.etCmpName?.editText?.error="This can't be empty"
-        if (binding?.etCmpName?.editText.toString().equals(""))
-            binding?.etCmpName?.editText?.error="This can't be empty"
-        if (binding?.etCmpName?.editText.toString().equals(""))
-            binding?.etCmpName?.editText?.error="This can't be empty"
-        if (binding?.etCmpName?.editText.toString().equals(""))
-            binding?.etCmpName?.editText?.error="This can't be empty"
-        if (binding?.etCmpName?.editText.toString().equals(""))
-            binding?.etCmpName?.editText?.error="This can't be empty"
-        if (binding?.etCmpName?.editText.toString().equals(""))
-            binding?.etCmpName?.editText?.error="This can't be empty"
-        if (binding?.etCmpName?.editText.toString().equals(""))
-            binding?.etCmpName?.editText?.error="This can't be empty"
-        if (binding?.etCmpName?.editText.toString().equals(""))
-            binding?.etCmpName?.editText?.error="This can't be empty"
-        if (binding?.etCmpName?.editText.toString().equals(""))
-            binding?.etCmpName?.editText?.error="This can't be empty"
-
+        else if (binding?.etjbtitle?.isEmpty() == true)
+            binding?.etjbtitle?.editText?.error="This can't be empty"
+        else if (binding?.etstat?.isEmpty() == true)
+            binding?.etstat?.editText?.error="This can't be empty"
+        else if (binding?.etdis?.isEmpty() == true)
+            binding?.etdis?.editText?.error="This can't be empty"
+        else if (binding?.etcit?.isEmpty() == true)
+            binding?.etcit?.editText?.error="This can't be empty"
+        else if (binding?.etphn?.isEmpty() == true)
+            binding?.etphn?.editText?.error="This can't be empty"
+        else if (binding?.etMinsal?.isEmpty() == true)
+            binding?.etMinsal?.editText?.error="This can't be empty"
+        else if (binding?.etmaxsal?.isEmpty() == true)
+            binding?.etmaxsal?.editText?.error="This can't be empty"
+        else if (binding?.etquali?.isEmpty() == true)
+            binding?.etquali?.editText?.error="This can't be empty"
+        else if (binding?.etmaxexp?.isEmpty() == true)
+            binding?.etmaxexp?.editText?.error="This can't be empty"
+        else{
+            uploadToDB()
+        }
+//        if (binding?.et?.editText.toString().equals(""))
+//            binding?.et?.editText?.error="This can't be empty"
     }
 
     private fun uploadToDB(
@@ -94,10 +96,7 @@ class addJobsFragment : Fragment() {
 
             withContext(Dispatchers.Main) {
                 if (response.isSuccessful) {
-                    view?.let {
-                        Navigation.findNavController(it)
-                            .navigate(R.id.action_addJobsFragment_to_sentSuccessfullyFragment)
-                    }
+
                     // Convert raw JSON to pretty JSON using GSON library
                     val gson = GsonBuilder().setPrettyPrinting().create()
                     val prettyJson = gson.toJson(
@@ -106,11 +105,17 @@ class addJobsFragment : Fragment() {
                                 ?.string()
                         )
                     )
-
+                    view?.let {
+                        Navigation.findNavController(it)
+                            .navigate(R.id.action_addJobsFragment_to_sentSuccessfullyFragment)
+                    }
                     Log.d("Pretty Printed JSON :", prettyJson)
 
                 } else {
-
+                    view?.let {
+                        Navigation.findNavController(it)
+                            .navigate(R.id.action_addJobsFragment_to_sentFailedFragment)
+                    }
                     Log.e("RETROFIT_ERROR", response.code().toString())
 
                 }

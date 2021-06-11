@@ -190,10 +190,7 @@ class addNewsFragment : Fragment(), DatePickerDialog.OnDateSetListener, TimePick
 
                 withContext(Dispatchers.Main) {
                     if (response.isSuccessful) {
-                        view?.let {
-                            Navigation.findNavController(it)
-                                .navigate(R.id.action_addNewsFragment_to_sentSuccessfullyFragment)
-                        }
+
                         // Convert raw JSON to pretty JSON using GSON library
                         val gson = GsonBuilder().setPrettyPrinting().create()
                         val prettyJson = gson.toJson(
@@ -201,12 +198,18 @@ class addNewsFragment : Fragment(), DatePickerDialog.OnDateSetListener, TimePick
                                 response.body()
                                 ?.string())
                         )
-
+                        view?.let {
+                            Navigation.findNavController(it)
+                                .navigate(R.id.action_addNewsFragment_to_sentSuccessfullyFragment)
+                        }
                         Log.d("Pretty Printed JSON :", prettyJson)
 
                     } else {
-
                         Log.e("RETROFIT_ERROR", response.code().toString())
+                        view?.let {
+                            Navigation.findNavController(it)
+                                .navigate(R.id.action_addNewsFragment_to_sentFailedFragment)
+                        }
 
                     }
                 }

@@ -18,6 +18,12 @@
         <action
             android:id="@+id/action_categoryAddFragment_to_addAdsFragment"
             app:destination="@id/addAdsFragment" />
+        <action
+            android:id="@+id/action_categoryAddFragment_to_addMatrimonyFragment"
+            app:destination="@id/addMatrimonyFragment" />
+        <action
+            android:id="@+id/action_categoryAddFragment_to_addRealEstateFragment"
+            app:destination="@id/addRealEstateFragment" />
     </fragment>
     <fragment
         android:id="@+id/addNewsFragment"
@@ -27,6 +33,9 @@
         <action
             android:id="@+id/action_addNewsFragment_to_sentSuccessfullyFragment"
             app:destination="@id/sentSuccessfullyFragment" />
+        <action
+            android:id="@+id/action_addNewsFragment_to_sentFailedFragment"
+            app:destination="@id/sentFailedFragment" />
     </fragment>
     <fragment
         android:id="@+id/sentSuccessfullyFragment"
@@ -41,6 +50,9 @@
         <action
             android:id="@+id/action_addJobsFragment_to_sentSuccessfullyFragment"
             app:destination="@id/sentSuccessfullyFragment" />
+        <action
+            android:id="@+id/action_addJobsFragment_to_sentFailedFragment"
+            app:destination="@id/sentFailedFragment" />
     </fragment>
     <fragment
         android:id="@+id/addAdsFragment"
@@ -50,5 +62,37 @@
         <action
             android:id="@+id/action_addAdsFragment_to_sentSuccessfullyFragment"
             app:destination="@id/sentSuccessfullyFragment" />
+        <action
+            android:id="@+id/action_addAdsFragment_to_sentFailedFragment"
+            app:destination="@id/sentFailedFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/sentFailedFragment"
+        android:name="com.developer.bshapp.fragments.SentFailedFragment"
+        android:label="fragment_sent_failed"
+        tools:layout="@layout/fragment_sent_failed" />
+    <fragment
+        android:id="@+id/addMatrimonyFragment"
+        android:name="com.developer.bshapp.fragments.AddMatrimonyFragment"
+        android:label="fragment_add_matrimony"
+        tools:layout="@layout/fragment_add_matrimony" >
+        <action
+            android:id="@+id/action_addMatrimonyFragment_to_sentSuccessfullyFragment"
+            app:destination="@id/sentSuccessfullyFragment" />
+        <action
+            android:id="@+id/action_addMatrimonyFragment_to_sentFailedFragment"
+            app:destination="@id/sentFailedFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addRealEstateFragment"
+        android:name="com.developer.bshapp.fragments.AddRealEstateFragment"
+        android:label="fragment_add_real_estate"
+        tools:layout="@layout/fragment_add_real_estate" >
+        <action
+            android:id="@+id/action_addRealEstateFragment_to_sentSuccessfullyFragment"
+            app:destination="@id/sentSuccessfullyFragment" />
+        <action
+            android:id="@+id/action_addRealEstateFragment_to_sentFailedFragment"
+            app:destination="@id/sentFailedFragment" />
     </fragment>
 </navigation>

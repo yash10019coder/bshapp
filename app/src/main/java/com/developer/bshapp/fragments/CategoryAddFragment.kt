@@ -210,23 +210,20 @@ class CategoryAddFragment : Fragment(), CategoryAdapter.OnItemClick {
                 Navigation.findNavController(it)
                     .navigate(R.id.action_categoryAddFragment_to_addJobsFragment)
             }
-//        else if(position==2)
-//            view?.let{
-//                Navigation.findNavController(it)
-//                    .navigate(R.id.)
-//            }
+        else if(position==2)
+            view?.let{
+                Navigation.findNavController(it)
+                    .navigate(R.id.action_categoryAddFragment_to_addRealEstateFragment)
+            }
         else if(position==3)
             view?.let{
                 Navigation.findNavController(it)
                     .navigate(R.id.action_categoryAddFragment_to_addAdsFragment)
             }
-//        else if(position==4)
-//            view?.let{
-//                Navigation.findNavController(it)
-//                    .navigate(R.id.action_categoryAddFragment_to_addJobsFragment2)
-//            }
-
+        else if(position==4)
+            view?.let{
+                Navigation.findNavController(it)
+                    .navigate(R.id.action_categoryAddFragment_to_addMatrimonyFragment)
+            }
     }
-
-
 }

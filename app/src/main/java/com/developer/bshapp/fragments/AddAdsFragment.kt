@@ -1,4 +1,4 @@
- package com.developer.bshapp.fragments
+package com.developer.bshapp.fragments
 
 import android.Manifest
 import android.app.Activity.RESULT_OK
@@ -14,6 +14,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.core.view.isEmpty
 import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
 import com.developer.bshapp.API.RetrofitApi
@@ -62,7 +63,7 @@ class AddAdsFragment : Fragment() {
         }
 
         binding!!.submitBtn.setOnClickListener {
-            uploadToDB()
+            validate()
         }
 
         binding!!.imageHolder.setOnClickListener {
@@ -98,147 +99,151 @@ class AddAdsFragment : Fragment() {
         return view
     }
 
-//     private fun validate() {
-//        if (binding?.etheadingtitle?.isEmpty()) {
-//            binding?.etcmpyname?.editText?.error = "Headline Required"
-//        } else if (news.isEmpty()) {
-//            etNews.editText?.error = "News content Required"
-//        } else if (mandal.isEmpty()) {
-//            etMandal.editText?.error = "Mandal Required"
-//        } else if (date.isEmpty()) {
-//            etDate.editText?.error = "Date Required"
-//        } else if (moreDetails.isEmpty()) {
-//            etMoreDetails.editText?.error = "More Details Cannot be Empty"
-//        } else if (!checkBox.isChecked) {
-//            Toast.makeText(requireContext(), "Agree to the Conditions", Toast.LENGTH_LONG).show()
-//        } else {
-//
-//            Log.d("value", headline.toString())
-////            Toast.makeText(requireContext(),headline,Toast.LENGTH_LONG).show()
-//            uploadToDB(headline, news, mandal, date, moreDetails)
-//        }
+    private fun validate() {
+        if (binding?.etheadingtitle?.isEmpty() == true)
+            binding?.etheadingtitle?.editText?.error = "This can't be empty"
+        else if (binding?.etcmpyname?.isEmpty() == true)
+            binding?.etcmpyname?.editText?.error = "This can't be empty"
+        else if (binding?.etphn?.isEmpty() == true)
+            binding?.etphn?.editText?.error = "This can't be empty"
+        else if (binding?.etdis?.isEmpty() == true)
+            binding?.etdis?.editText?.error = "This can't be empty"
+        else if (binding?.etprice?.isEmpty() == true)
+            binding?.etprice?.editText?.error = "This can't be empty"
+        else if (binding?.etdetails?.isEmpty() == true)
+            binding?.etdetails?.editText?.error = "This can't be empty"
+        else if (binding?.etwebsite?.isEmpty() == true)
+            binding?.etwebsite?.editText?.error = "This can't be empty"
+        else if (binding?.etadres?.isEmpty() == true)
+            binding?.etadres?.editText?.error = "This can't be empty"
+        else {
+
+//            Log.d("TAG","done")
+//            Toast.makeText(requireContext(),headline,Toast.LENGTH_LONG).show()
+            uploadToDB()
+        }
+    }
 
 
-//    }
+private fun uploadToDB() {
 
+    val retrofit = Retrofit.Builder()
+        .baseUrl("http://139.59.61.90/main/") // as we are sending data in json format so
+        .build()
 
-    private fun uploadToDB() {
+    // Create Service
+    val service = retrofit.create(RetrofitApi::class.java)
 
-        val retrofit = Retrofit.Builder()
-            .baseUrl("http://139.59.61.90/main/") // as we are sending data in json format so
-            .build()
+    val params = HashMap<String?, String?>()
+    params["image"] = encodedImage
+    params["description"] = binding?.etdis?.editText?.text.toString()
+    params["companyName"] = binding?.etcmpyname?.editText?.text.toString()
+    params["phone"] = binding?.etphn?.editText?.text.toString()
+    params["websiteLink"] = binding?.etwebsite?.editText?.text.toString()
+    params["price"] = binding?.etprice?.editText?.text.toString()
+    params["address"] = binding?.etadres?.editText?.text.toString()
 
-        // Create Service
-        val service = retrofit.create(RetrofitApi::class.java)
+    CoroutineScope(Dispatchers.IO).launch {
 
-        val params = HashMap<String?, String?>()
-        params["image"] = encodedImage
-        params["description"] =binding?.etdis?.editText?.text.toString()
-        params["companyName"] = binding?.etcmpyname?.editText?.text.toString()
-        params["phone"] = binding?.etphn?.editText?.text.toString()
-        params["websiteLink"] = binding?.etwebsite?.editText?.text.toString()
-        params["price"] = binding?.etprice?.editText?.text.toString()
-        params["address"] = binding?.etadres?.editText?.text.toString()
+        // Do the POST request and get response
+        val response = service.uploadAdd(params)
 
-        CoroutineScope(Dispatchers.IO).launch {
-
-            // Do the POST request and get response
-            val response = service.uploadAdd(params)
-
-            withContext(Dispatchers.Main) {
-                if (response.isSuccessful) {
-                    view?.let {
-                        Navigation.findNavController(it)
-                            .navigate(R.id.action_addAdsFragment_to_sentSuccessfullyFragment)
-                    }
-                    // Convert raw JSON to pretty JSON using GSON library
-                    val gson = GsonBuilder().setPrettyPrinting().create()
-                    val prettyJson = gson.toJson(
-                        JsonParser().parse(
-                            response.body()
-                                ?.string()
-                        )
+        withContext(Dispatchers.Main) {
+            if (response.isSuccessful) {
+                // Convert raw JSON to pretty JSON using GSON library
+                val gson = GsonBuilder().setPrettyPrinting().create()
+                val prettyJson = gson.toJson(
+                    JsonParser().parse(
+                        response.body()
+                            ?.string()
                     )
-
-                    Log.d("Pretty Printed JSON :", prettyJson)
-
-                } else {
-
-                    Log.e("RETROFIT_ERROR", response.code().toString())
-
-                }
-            }
-        }
-
-    }
-
-
-    /*
-    private fun launchSpeechToText(clickedName: String) {
-        clickedButton = clickedName
-        var languagePref = "te"
-        if (language == "kannada") {
-            languagePref = "kn"
-
-        } else if (language == "tamil") {
-            languagePref = "ta"
-        }
-
-        val intent = Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH)
-        intent.putExtra(
-            RecognizerIntent.EXTRA_LANGUAGE,
-            languagePref
-        )
-        intent.putExtra(
-            RecognizerIntent.EXTRA_LANGUAGE_PREFERENCE,
-            languagePref
-        )
-        intent.putExtra(RecognizerIntent.EXTRA_PROMPT, "Speak to text")
-
-        try {
-            launchSomeActivity.launch(intent)
-
-        } catch (e: Exception) {
-            Toast
-                .makeText(
-                    requireContext(), " " + e.message,
-                    Toast.LENGTH_SHORT
                 )
-                .show()
-        }
-
-
-    }
-*/
-    private var onImagePicked =
-        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
-            if (result.resultCode == RESULT_OK) {
-                val mainData: Intent = result.data!!
-                val filePath: Uri = mainData.data!!
-                try {
-                    val inputStream = requireActivity().contentResolver.openInputStream(filePath)
-
-                    bitmap = BitmapFactory.decodeStream(inputStream)
-
-                    binding?.newsImg?.setImageBitmap(bitmap)
-                    binding?.placeholder?.visibility = View.INVISIBLE
-
-                    imageStore(bitmap)
-                } catch (e: Exception) {
-                    print(e.message)
+                view?.let {
+                    Navigation.findNavController(it)
+                        .navigate(R.id.action_addAdsFragment_to_sentSuccessfullyFragment)
                 }
+                Log.d("Pretty Printed JSON :", prettyJson)
 
+            } else {
+                view?.let {
+                    Navigation.findNavController(it)
+                        .navigate(R.id.action_addAdsFragment_to_sentFailedFragment)
+                }
+                Log.e("RETROFIT_ERROR", response.code().toString())
 
             }
         }
-
-    private fun imageStore(bitmap: Bitmap) {
-        val stream: ByteArrayOutputStream = ByteArrayOutputStream()
-        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, stream)
-
-        val imageBytes = stream.toByteArray()
-        encodedImage = Base64.encodeToString(imageBytes, Base64.DEFAULT)
-
-
     }
+
+}
+
+
+/*
+private fun launchSpeechToText(clickedName: String) {
+    clickedButton = clickedName
+    var languagePref = "te"
+    if (language == "kannada") {
+        languagePref = "kn"
+
+    } else if (language == "tamil") {
+        languagePref = "ta"
+    }
+
+    val intent = Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH)
+    intent.putExtra(
+        RecognizerIntent.EXTRA_LANGUAGE,
+        languagePref
+    )
+    intent.putExtra(
+        RecognizerIntent.EXTRA_LANGUAGE_PREFERENCE,
+        languagePref
+    )
+    intent.putExtra(RecognizerIntent.EXTRA_PROMPT, "Speak to text")
+
+    try {
+        launchSomeActivity.launch(intent)
+
+    } catch (e: Exception) {
+        Toast
+            .makeText(
+                requireContext(), " " + e.message,
+                Toast.LENGTH_SHORT
+            )
+            .show()
+    }
+
+
+}
+*/
+private var onImagePicked =
+    registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+        if (result.resultCode == RESULT_OK) {
+            val mainData: Intent = result.data!!
+            val filePath: Uri = mainData.data!!
+            try {
+                val inputStream = requireActivity().contentResolver.openInputStream(filePath)
+
+                bitmap = BitmapFactory.decodeStream(inputStream)
+
+                binding?.newsImg?.setImageBitmap(bitmap)
+                binding?.placeholder?.visibility = View.INVISIBLE
+
+                imageStore(bitmap)
+            } catch (e: Exception) {
+                print(e.message)
+            }
+
+
+        }
+    }
+
+private fun imageStore(bitmap: Bitmap) {
+    val stream: ByteArrayOutputStream = ByteArrayOutputStream()
+    bitmap.compress(Bitmap.CompressFormat.JPEG, 100, stream)
+
+    val imageBytes = stream.toByteArray()
+    encodedImage = Base64.encodeToString(imageBytes, Base64.DEFAULT)
+
+
+}
 }

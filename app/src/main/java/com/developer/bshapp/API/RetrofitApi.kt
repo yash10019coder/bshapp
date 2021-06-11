@@ -25,4 +25,12 @@ interface RetrofitApi {
    @POST("api/createAdd.php")
    suspend fun uploadAdd(@FieldMap params: HashMap<String?, String?>): Response<ResponseBody>
 
+   @FormUrlEncoded
+   @POST("api/createRealestate.php")
+   suspend fun uploadRealEstate(@FieldMap params: HashMap<String?, String?>): Response<ResponseBody>
+
+   @FormUrlEncoded
+   @POST("api/createMatrimony.php")
+   suspend fun uploadMatrimony(@FieldMap params: HashMap<String?, String?>): Response<ResponseBody>
+
 }
